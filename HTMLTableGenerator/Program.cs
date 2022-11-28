@@ -1,2 +1,2 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿string moviesText = File.ReadAllText("movies.json");
+Console.WriteLine(moviesText);
