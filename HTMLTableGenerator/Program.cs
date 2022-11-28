@@ -13,13 +13,30 @@ List<Movie> movies = JsonSerializer.Deserialize<List<Movie>>(moviesText, options
 //}
 
 // Tablo başla
-string tabloBasla = "";
+string tabloBasla = "<table>";
+
 // Tablo başlıklar
-string tabloBasliklar = "";
+string tabloBasliklar = "<thead><tr><td>id</td><td>title</td><td>rating</td><td>genre</td><td>duration </td></tr></thead>";
+
 // Tablo gövde
-string tabloGovde = "";
+
+string tabloGovde = "<tbody>";
+
+foreach (var m in movies)
+{
+     tabloGovde += $"<tr>" +
+        $"<td> {m.Id} </td >" +
+        $"<td> {m.Title}</td >" +
+        $"<td> {m.Rating}</td >" +
+        $"<td> {m.Genre} </td >" +
+        $"<td> {m.Duration} </td >" +
+        $"</tr> ";
+}
+
+tabloGovde += "</tbody>";
+
 // Tablo kapat
-string tabloKapat = "";
+string tabloKapat = "</table>";
 
 string tablo = tabloBasla + tabloBasliklar + tabloGovde + tabloKapat;
 File.WriteAllText("output.html", tablo);
